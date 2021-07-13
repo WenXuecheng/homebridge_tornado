@@ -11,6 +11,8 @@ class Application(tornado.web.Application):
             (r'/home', index.HomeHandler),
             (r'/test', index.TestHandler),
             (r'/chat', index.ChatHandler),
+            #Homebridge : 1.switch ,2.
+            (r'/homebridge/switch/(.*)/(.*)', index.SwitchHandler),
 
             (r'/(.*)$', index.StaticFileHandler,
              {"path": os.path.join(config.BASE_DIRS, "static/html"), "default_filename": "index.html"})

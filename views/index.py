@@ -1,7 +1,7 @@
 import tornado.web
 from tornado.web import RequestHandler
 from tornado.websocket import WebSocketHandler
-
+import urllib.parse as up
 class StaticFileHandler(tornado.web.StaticFileHandler):
     def __init__(self, *args, **kwargs):
         super(StaticFileHandler, self).__init__(*args, **kwargs)
@@ -29,6 +29,37 @@ class ChatHandler(WebSocketHandler):
 
     def check_origin(self, origin):
         return True
+
+class SwitchHandler(RequestHandler):
+    def get(self, name,option,*args, **kwargs):
+        name = up.unquote(name)
+        option = up.unquote(option)
+        if name == '顶灯':
+            if option == 'get':
+                res = {
+                    "name_switch": name,
+                    "option_switch": option,
+                    "status_switch": True,
+                }
+                self.write(res)
+            if option == 'open':
+                res = {
+                    "name_switch": name,
+                    "option_switch": option,
+                    "status_switch": '',
+                }
+                self.write(res)
+            if option == 'close':
+                res = {
+                    "name_switch": name,
+                    "option_switch": option,
+                    "status_switch": '',
+                }
+                self.write(res)
+        elif name == 'room1_swtich_light':
+            self.write(name + ',' + option)
+        else:
+            pass
 
 class TestHandler(RequestHandler):
     def get(self, *args, **kwargs):
