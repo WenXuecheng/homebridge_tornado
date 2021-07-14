@@ -61,31 +61,54 @@ class SwitchHandler(RequestHandler):
         else:
             pass
 class LightbulbHandler(RequestHandler):
-    def get(self, name,option,*args, **kwargs):
+    def get(self, name, option, value,*args, **kwargs):
         name = up.unquote(name)
         option = up.unquote(option)
+        value = up.unquote(value)
         if name == '台灯':
-            if option == 'get':
-                res = {
-                    "name_lightbulb": name,
-                    "option_lightbulb": option,
-                    "status_lightbulb": True,
-                }
-                self.write(res)
-            if option == 'open':
-                res = {
-                    "name_lightbulb": name,
-                    "option_lightbulb": option,
-                    "status_lightbulb": '',
-                }
-                self.write(res)
-            if option == 'close':
-                res = {
-                    "name_lightbulb": name,
-                    "option_lightbulb": option,
-                    "status_lightbulb": '',
-                }
-                self.write(res)
+            if value == 'true':
+                if option == 'set_brightness':
+                    res = {
+                        "name_lightbulb": name,
+                        "option_lightbulb": option,
+                        "status_lightbulb": '',
+                        "brightness_lightbulb": value,
+                    }
+                    self.write(res)
+            elif value == 'false':
+                if option == 'get_brightness':
+                    res = {
+                        "name_lightbulb": name,
+                        "option_lightbulb": option,
+                        "status_lightbulb": '',
+                        "brightness_lightbulb": 50,
+                    }
+                    self.write(res)
+                if option == 'get_status':
+                    res = {
+                        "name_lightbulb": name,
+                        "option_lightbulb": option,
+                        "status_lightbulb": True,
+                        "brightness_lightbulb": '',
+                    }
+                    self.write(res)
+                if option == 'open':
+                    res = {
+                        "name_lightbulb": name,
+                        "option_lightbulb": option,
+                        "status_lightbulb": '',
+                        "brightness_lightbulb": '',
+                    }
+                    self.write(res)
+                if option == 'close':
+                    res = {
+                        "name_lightbulb": name,
+                        "option_lightbulb": option,
+                        "status_lightbulb": '',
+                        "brightness_lightbulb": '',
+                    }
+                    self.write(res)
+
         elif name == 'room1_swtich_light':
             self.write(name + ',' + option)
         else:
