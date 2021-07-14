@@ -66,7 +66,7 @@ class LightbulbHandler(RequestHandler):
         option = up.unquote(option)
         value = up.unquote(value)
         if name == '台灯':
-            if value == 'true':
+            if value != 'none':
                 if option == 'set_brightness':
                     res = {
                         "name_lightbulb": name,
@@ -75,7 +75,7 @@ class LightbulbHandler(RequestHandler):
                         "brightness_lightbulb": value,
                     }
                     self.write(res)
-            elif value == 'false':
+            else:
                 if option == 'get_brightness':
                     res = {
                         "name_lightbulb": name,
