@@ -67,23 +67,23 @@ class LightbulbHandler(RequestHandler):
         if name == '台灯':
             if option == 'get':
                 res = {
-                    "name_switch": name,
-                    "option_switch": option,
-                    "status_switch": True,
+                    "name_lightbulb": name,
+                    "option_lightbulb": option,
+                    "status_lightbulb": True,
                 }
                 self.write(res)
             if option == 'open':
                 res = {
-                    "name_switch": name,
-                    "option_switch": option,
-                    "status_switch": '',
+                    "name_lightbulb": name,
+                    "option_lightbulb": option,
+                    "status_lightbulb": '',
                 }
                 self.write(res)
             if option == 'close':
                 res = {
-                    "name_switch": name,
-                    "option_switch": option,
-                    "status_switch": '',
+                    "name_lightbulb": name,
+                    "option_lightbulb": option,
+                    "status_lightbulb": '',
                 }
                 self.write(res)
         elif name == 'room1_swtich_light':
