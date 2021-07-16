@@ -245,7 +245,7 @@ class WindowCoveringHandler(RequestHandler):
                     res = {
                         "name_windowcovering": name,
                         "option_windowcovering": option,
-                        "TargetPosition":60,
+                        "TargetPosition":50,
                         "CurrentPosition": '',
                         "PositionState": '',
                     }
