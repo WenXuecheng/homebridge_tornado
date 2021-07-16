@@ -60,6 +60,7 @@ class SwitchHandler(RequestHandler):
             self.write(name + ',' + option)
         else:
             pass
+
 class LightbulbHandler(RequestHandler):
     def get(self, name, option, value,*args, **kwargs):
         name = up.unquote(name)
@@ -113,6 +114,97 @@ class LightbulbHandler(RequestHandler):
             self.write(name + ',' + option)
         else:
             pass
+
+class fanv2Handler(RequestHandler):
+    def get(self, name, option, value,*args, **kwargs):
+        name = up.unquote(name)
+        option = up.unquote(option)
+        value = up.unquote(value)
+        if name == '风扇':
+            if value != 'none':
+                if option == 'set_RotationSpeed':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":value,
+                        "status_fanv2": '',
+                        'SwingMode':'',
+
+                    }
+                    self.write(res)
+            else:
+                if option == 'get_RotationSpeed':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":50,
+                        "status_fanv2": '',
+                        'SwingMode':'',
+                    }
+                    self.write(res)
+                if option == 'get_status':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":'',
+                        "status_fanv2": True,
+                        'SwingMode':'',
+                    }
+                    self.write(res)
+                if option == 'open':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":'',
+                        "status_fanv2": '',
+                        'SwingMode':'',
+                    }
+                    self.write(res)
+                if option == 'close':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":'',
+                        "status_fanv2": '',
+                        'SwingMode':'',
+                    }
+                    self.write(res)
+
+                if option == 'get_SwingMode':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":'',
+                        "status_fanv2": '',
+                        'SwingMode':True,
+                    }
+                    self.write(res)
+
+                if option == 'SwingMode':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":'',
+                        "status_fanv2": '',
+                        'SwingMode':'',
+                    }
+                    self.write(res)
+
+                if option == 'NoSwingMode':
+                    res = {
+                        "name_fanv2": name,
+                        "option_fanv2": option,
+                        "RotationSpeed":'',
+                        "status_fanv2": '',
+                        'SwingMode':'',
+                    }
+                    self.write(res)
+
+        elif name == 'room1_swtich_light':
+            self.write(name + ',' + option)
+        else:
+            pass
+
 class TestHandler(RequestHandler):
     def get(self, *args, **kwargs):
         self.write('{"title":"json在线解析（简版） -JSON在线解析","json.url":"https://www.sojson.com/simple_json.html","keywords":"json在线解析","功能":["JSON美化","JSON数据类型显示","JSON数组显示角标","高亮显示","错误提示",{"备注":["www.sojson.com","json.la"]}],"加入我们":{"qq群":"259217951"}}')
