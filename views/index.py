@@ -115,7 +115,7 @@ class LightbulbHandler(RequestHandler):
         else:
             pass
 
-class fanv2Handler(RequestHandler):
+class Fanv2Handler(RequestHandler):
     def get(self, name, option, value,*args, **kwargs):
         name = up.unquote(name)
         option = up.unquote(option)
@@ -199,6 +199,58 @@ class fanv2Handler(RequestHandler):
                         'SwingMode':'',
                     }
                     self.write(res)
+
+        elif name == 'room1_swtich_light':
+            self.write(name + ',' + option)
+        else:
+            pass
+
+class WindowCoveringHandler(RequestHandler):
+    def get(self, name, option, value,*args, **kwargs):
+        name = up.unquote(name)
+        option = up.unquote(option)
+        value = up.unquote(value)
+        if name == '窗帘':
+            if value != 'none':
+                if option == 'set_TargetPosition':
+                    res = {
+                        "name_lightbulb": name,
+                        "option_lightbulb": option,
+                        "TargetPosition":value,
+                        "CurrentPosition": '',
+                        "PositionState": '',
+                    }
+                    self.write(res)
+            else:
+                if option == 'get_CurrentPosition':
+                    res = {
+                        "name_windowcovering": name,
+                        "option_windowcovering": option,
+                        "TargetPosition":'',
+                        "CurrentPosition": 50,
+                        "PositionState": '',
+                    }
+                    self.write(res)
+                if option == 'get_PositionState':
+                    res = {
+                        "name_windowcovering": name,
+                        "option_windowcovering": option,
+                        "TargetPosition":'',
+                        "CurrentPosition": '',
+                        "PositionState": 1,
+                    }
+                    self.write(res)
+
+                if option == 'get_TargetPosition':
+                    res = {
+                        "name_windowcovering": name,
+                        "option_windowcovering": option,
+                        "TargetPosition":60,
+                        "CurrentPosition": '',
+                        "PositionState": '',
+                    }
+                    self.write(res)
+
 
         elif name == 'room1_swtich_light':
             self.write(name + ',' + option)
