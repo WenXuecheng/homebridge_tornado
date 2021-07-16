@@ -176,7 +176,7 @@ class Fanv2Handler(RequestHandler):
                         "option_fanv2": option,
                         "RotationSpeed":'',
                         "status_fanv2": '',
-                        'SwingMode':True,
+                        'SwingMode':1,
                     }
                     self.write(res)
 
@@ -237,7 +237,7 @@ class WindowCoveringHandler(RequestHandler):
                         "option_windowcovering": option,
                         "TargetPosition":'',
                         "CurrentPosition": '',
-                        "PositionState": 1,
+                        "PositionState": 2,
                     }
                     self.write(res)
 
