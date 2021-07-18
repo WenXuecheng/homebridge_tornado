@@ -10,6 +10,6 @@ if __name__ == "__main__":
     tornado.options.parse_command_line()
     app = Application()
     httpServer = tornado.httpserver.HTTPServer(app)
-    httpServer.bind(config.options["port"])
+    httpServer.bind(config.options["port"],"0.0.0.0")
     httpServer.start(1)
     tornado.ioloop.IOLoop.current().start()
