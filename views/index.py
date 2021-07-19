@@ -35,6 +35,7 @@ class SwitchHandler(RequestHandler):
         name = up.unquote(name)
         option = up.unquote(option)
         value = up.unquote(value)
+        print("**********************************")
         if option == 'init':
             print(name+'@'+value)
         if name == '顶灯':
