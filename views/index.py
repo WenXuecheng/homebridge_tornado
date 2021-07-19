@@ -31,9 +31,12 @@ class ChatHandler(WebSocketHandler):
         return True
 
 class SwitchHandler(RequestHandler):
-    def get(self, name,option,*args, **kwargs):
+    def get(self, name, option, value,*args, **kwargs):
         name = up.unquote(name)
         option = up.unquote(option)
+        value = up.unquote(value)
+        if option == 'init':
+            print(name+'@'+value)
         if name == '顶灯':
             if option == 'get':
                 res = {
