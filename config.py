@@ -3,7 +3,7 @@ BASE_DIRS = os.path.dirname(__file__)
 
 #参数
 options = {
-    "port": 8001
+    "port": 6526
 }
 
 #数据库配置
