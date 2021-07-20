@@ -36,7 +36,9 @@ class SwitchHandler(RequestHandler):
         name = up.unquote(name)
         option = up.unquote(option)
         value = up.unquote(value)
-        self.write(switch.option_dev_swtich(name,option,value,str(self.request.remote_ip)))
+        res = switch.option_dev_swtich(name,option,value,str(self.request.remote_ip))
+        if res != None:
+            self.write(res)
 
 class LightbulbHandler(RequestHandler):
     def get(self, name, option, value,*args, **kwargs):

@@ -10,14 +10,15 @@ name_to_dev_name = {
 
 
 def option_dev_swtich(name,op,va,ip):
-    global dev_name
+    global dev_name_and_ip
     try:
         name = name_to_dev_name[name]
     except:
         name=name
     if name == "esp-switch-wifi-dev-toplight":
         if op == 'init':
-            dev_name["esp-switch-wifi-dev-toplight"] = ip;
+            dev_name_and_ip["esp-switch-wifi-dev-toplight"] = ip;
+            return None;
         if op == 'open':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
             res = requests.get(url)
