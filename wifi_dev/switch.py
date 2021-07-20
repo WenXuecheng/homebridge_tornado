@@ -1,4 +1,5 @@
 import requests
+import config
 name_to_dev_name = {
     "顶灯":"esp-switch-wifi-dev-toplight",
 }
@@ -13,11 +14,11 @@ def option_dev_swtich(name,op,va,ip):
         name=name
     if name == "esp-switch-wifi-dev-toplight":
         if op == 'init':
-            with open('./devs/esp-switch-wifi-dev-toplight','w') as fd:
+            with open(config.settings["wifi_dev_path"]+'/devs/esp-switch-wifi-dev-toplight','w+') as fd:
                 fd.write(ip)
             return None;
         if op == 'open':
-            with open('./devs/esp-switch-wifi-dev-toplight','w') as fd:
+            with open(config.settings["wifi_dev_path"]+'/devs/esp-switch-wifi-dev-toplight','r') as fd:
                 url = 'http://' + fd.read() + '/' + op
                 res = requests.get(url)
                 res_switch = {
@@ -27,7 +28,7 @@ def option_dev_swtich(name,op,va,ip):
                 }
                 return res_switch
         if op == 'close':
-            with open('./devs/esp-switch-wifi-dev-toplight','w') as fd:
+            with open(config.settings["wifi_dev_path"]+'/devs/esp-switch-wifi-dev-toplight','r') as fd:
                 url = 'http://' + fd.read() + '/' + op
                 res = requests.get(url)
                 res_switch = {
@@ -37,7 +38,7 @@ def option_dev_swtich(name,op,va,ip):
                 }
                 return res_switch
         if op == 'get_status':
-            with open('./devs/esp-switch-wifi-dev-toplight','w') as fd:
+            with open(config.settings["wifi_dev_path"]+'/devs/esp-switch-wifi-dev-toplight','r') as fd:
                 url = 'http://' + fd.read() + '/' + op
                 res = requests.get(url)
                 res_switch = {
