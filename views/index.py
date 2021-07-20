@@ -2,6 +2,7 @@ import tornado.web
 from tornado.web import RequestHandler
 from tornado.websocket import WebSocketHandler
 import urllib.parse as up
+from wifi_dev import switch
 class StaticFileHandler(tornado.web.StaticFileHandler):
     def __init__(self, *args, **kwargs):
         super(StaticFileHandler, self).__init__(*args, **kwargs)
@@ -35,35 +36,7 @@ class SwitchHandler(RequestHandler):
         name = up.unquote(name)
         option = up.unquote(option)
         value = up.unquote(value)
-        print("**********************************"+self.request.remote_ip)
-        if option == 'init':
-            print(name+'@'+value)
-        if name == '顶灯':
-            if option == 'get':
-                res = {
-                    "name_switch": name,
-                    "option_switch": option,
-                    "status_switch": True,
-                }
-                self.write(res)
-            if option == 'open':
-                res = {
-                    "name_switch": name,
-                    "option_switch": option,
-                    "status_switch": '',
-                }
-                self.write(res)
-            if option == 'close':
-                res = {
-                    "name_switch": name,
-                    "option_switch": option,
-                    "status_switch": '',
-                }
-                self.write(res)
-        elif name == 'room1_swtich_light':
-            self.write(name + ',' + option)
-        else:
-            pass
+        self.write(switch.option_dev_swtich(name,option,value,self.request.remote_ip))
 
 class LightbulbHandler(RequestHandler):
     def get(self, name, option, value,*args, **kwargs):
