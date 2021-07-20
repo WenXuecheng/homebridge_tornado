@@ -17,8 +17,6 @@ def option_dev_swtich(name,op,va,ip):
         name=name
     if name == "esp-switch-wifi-dev-toplight":
         if op == 'init':
-            if ip == '':
-                dev_name_and_ip["esp-switch-wifi-dev-toplight"] = 'sadfdsafsdf';
             dev_name_and_ip["esp-switch-wifi-dev-toplight"] = ip;
             return None;
         if op == 'open':
