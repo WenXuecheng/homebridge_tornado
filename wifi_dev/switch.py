@@ -25,7 +25,7 @@ def option_dev_swtich(name,op,va,ip):
             res_switch = {
                 "name_switch": name,
                 "option_switch": op,
-                "status_switch": res.text.split(':')[1],
+                "status_switch": bool(int(res.text.split(':')[1])),
             }
             return res_switch
         if op == 'close':
@@ -34,7 +34,7 @@ def option_dev_swtich(name,op,va,ip):
             res_switch = {
                 "name_switch": name,
                 "option_switch": op,
-                "status_switch": res.text.split(':')[1],
+                "status_switch": bool(int(res.text.split(':')[1])),
             }
             return res_switch
         if op == 'get_status':
@@ -43,7 +43,7 @@ def option_dev_swtich(name,op,va,ip):
             res_switch = {
                 "name_switch": name,
                 "option_switch": op,
-                "status_switch": res.text.split(':')[1],
+                "status_switch": bool(int(res.text.split(':')[1])),
             }
             return res_switch
 
