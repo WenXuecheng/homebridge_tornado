@@ -18,6 +18,14 @@ def option_dev_swtich(name,op,va,ip):
     if name == "esp-switch-wifi-dev-toplight":
         if op == 'init':
             dev_name_and_ip["esp-switch-wifi-dev-toplight"] = ip;
+            url = 'http://' + dev_name_and_ip[name] + '/' + op
+            res = requests.get(url)
+            res_switch = {
+                "name_switch": name,
+                "option_switch": op,
+                "status_switch": res.split(':')[1],
+            }
+            return res_switch
             return None;
         if op == 'open':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
