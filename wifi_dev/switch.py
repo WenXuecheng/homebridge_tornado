@@ -17,34 +17,58 @@ def option_dev_swtich(name,op,va,ip):
         name=name
     if name == "esp-switch-wifi-dev-toplight":
         if op == 'init':
-            dev_name_and_ip["esp-switch-wifi-dev-toplight"] = ip;
-            return None;
+            if ip != dev_name_and_ip["esp-switch-wifi-dev-toplight"]:
+                dev_name_and_ip["esp-switch-wifi-dev-toplight"] = ip
+                return 'ip changed'
+            return 'init ok'
         if op == 'open':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
-            res = requests.get(url)
-            res_switch = {
-                "name_switch": name,
-                "option_switch": op,
-                "status_switch": bool(1-int(res.text.split(':')[1])),
-            }
+            try:
+                res = requests.get(url)
+                res_switch = {
+                    "name_switch": name,
+                    "option_switch": op,
+                    "status_switch": bool(1-int(res.text.split(':')[1])),
+                }
+            except:
+                res_switch = {
+                    "name_switch": name,
+                    "option_switch": op,
+                    "status_switch": '',
+                }
             return res_switch
+
         if op == 'close':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
-            res = requests.get(url)
-            res_switch = {
-                "name_switch": name,
-                "option_switch": op,
-                "status_switch": bool(1-int(res.text.split(':')[1])),
-            }
+            try:
+                res = requests.get(url)
+                res_switch = {
+                    "name_switch": name,
+                    "option_switch": op,
+                    "status_switch": bool(1-int(res.text.split(':')[1])),
+                }
+            except:
+                res_switch = {
+                    "name_switch": name,
+                    "option_switch": op,
+                    "status_switch": '',
+                }
             return res_switch
         if op == 'get_status':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
-            res = requests.get(url)
-            res_switch = {
-                "name_switch": name,
-                "option_switch": op,
-                "status_switch": bool(1-int(res.text.split(':')[1])),
-            }
+            try:
+                res = requests.get(url)
+                res_switch = {
+                    "name_switch": name,
+                    "option_switch": op,
+                    "status_switch": bool(1-int(res.text.split(':')[1])),
+                }
+            except:
+                res_switch = {
+                    "name_switch": name,
+                    "option_switch": op,
+                    "status_switch": False,
+                }
             return res_switch
 
 
