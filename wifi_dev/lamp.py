@@ -22,7 +22,7 @@ def option_dev_swtich(name,op,va,ip):
                 return 'ip changed'
             return 'init ok'
         if op == 'open':
-            url = 'http://' + dev_name_and_ip[name] + '/' + op + '/none'
+            url = 'http://' + dev_name_and_ip[name] + ':6236/' + op + '/none'
             try:
                 res = requests.get(url)
                 res_lamp = {
@@ -39,7 +39,7 @@ def option_dev_swtich(name,op,va,ip):
             return res_lamp
 
         if op == 'close':
-            url = 'http://' + dev_name_and_ip[name] + '/' + op + '/none'
+            url = 'http://' + dev_name_and_ip[name] + ':6236/' + op + '/none'
             try:
                 res = requests.get(url)
                 res_lamp = {
@@ -55,7 +55,7 @@ def option_dev_swtich(name,op,va,ip):
                 }
             return res_lamp
         if op == 'get_status':
-            url = 'http://' + dev_name_and_ip[name] + '/' + op +'/none'
+            url = 'http://' + dev_name_and_ip[name] + ':6236/' + op +'/none'
             try:
                 res = requests.get(url)
                 res_lamp = {
