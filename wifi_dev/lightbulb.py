@@ -20,8 +20,8 @@ def option_dev_lightbulb(name,op,va,ip):
         if op == 'init':
             if ip != dev_name_and_ip["esp-lightbulb-wifi-dev-table-lamp"]:
                 dev_name_and_ip["esp-lightbulb-wifi-dev-table-lamp"] = ip
-                return 'ip changed'
-            return 'init ok'
+                return {"ip_status":"changed"}
+            return {"ip_status":"unchanged"}
         if op == 'set_brightness':
             res_lightbulb = {
                 "name_lightbulb": name,
