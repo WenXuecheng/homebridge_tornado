@@ -45,54 +45,8 @@ class LightbulbHandler(RequestHandler):
         name = up.unquote(name)
         option = up.unquote(option)
         value = up.unquote(value)
-        if name == '台灯':
-            if value != 'none':
-                if option == 'set_brightness':
-                    res = {
-                        "name_lightbulb": name,
-                        "option_lightbulb": option,
-                        "status_lightbulb": '',
-                        "brightness_lightbulb": value,
-                    }
-                    self.write(res)
-            else:
-                if option == 'get_brightness':
-                    res = {
-                        "name_lightbulb": name,
-                        "option_lightbulb": option,
-                        "status_lightbulb": '',
-                        "brightness_lightbulb": 50,
-                    }
-                    self.write(res)
-                if option == 'get_status':
-                    res = {
-                        "name_lightbulb": name,
-                        "option_lightbulb": option,
-                        "status_lightbulb": True,
-                        "brightness_lightbulb": '',
-                    }
-                    self.write(res)
-                if option == 'open':
-                    res = {
-                        "name_lightbulb": name,
-                        "option_lightbulb": option,
-                        "status_lightbulb": '',
-                        "brightness_lightbulb": '',
-                    }
-                    self.write(res)
-                if option == 'close':
-                    res = {
-                        "name_lightbulb": name,
-                        "option_lightbulb": option,
-                        "status_lightbulb": '',
-                        "brightness_lightbulb": '',
-                    }
-                    self.write(res)
-
-        elif name == 'room1_swtich_light':
-            self.write(name + ',' + option)
-        else:
-            pass
+        res = lightbulb.option_dev_lightbulb(name, option, value, str(self.request.remote_ip))
+        self.write(res)
 
 class Fanv2Handler(RequestHandler):
     def get(self, name, option, value,*args, **kwargs):
