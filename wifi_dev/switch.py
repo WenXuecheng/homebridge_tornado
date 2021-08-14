@@ -19,8 +19,8 @@ def option_dev_swtich(name,op,va,ip):
         if op == 'init':
             if ip != dev_name_and_ip["esp-switch-wifi-dev-toplight"]:
                 dev_name_and_ip["esp-switch-wifi-dev-toplight"] = ip
-                return 'ip changed'
-            return 'init ok'
+                return ''
+            return ''
         if op == 'open':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
             try:
