@@ -11,6 +11,7 @@ name_to_dev_name = {
 
 def option_dev_swtich(name,op,va,ip):
     global dev_name_and_ip
+    global name_to_dev_name
     try:
         name = name_to_dev_name[name]
     except:
