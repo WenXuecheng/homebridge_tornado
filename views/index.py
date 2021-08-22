@@ -41,7 +41,7 @@ class SwitchHandler(RequestHandler):
         self.write(res)
 
 class LightbulbHandler(RequestHandler):
-    def head(self):
+    def head(self, name, option, value,*args, **kwargs):
         pass
     def get(self, name, option, value,*args, **kwargs):
         name = up.unquote(name)
