@@ -12,7 +12,7 @@ class Application(tornado.web.Application):
             (r'/test', index.TestHandler),
             (r'/chat', index.ChatHandler),
             #Homebridge : 1.switch ,2.Lightbulb
-            (r'/homebridge/switch/(.*)/(.*)/(.*)', index.SwitchHandler),
+            #(r'/homebridge/switch/(.*)/(.*)/(.*)', index.SwitchHandler),
             (r'/homebridge/lightbulb/(.*)/(.*)/(.*)', index.LightbulbHandler),
             (r'/homebridge/fanv2/(.*)/(.*)/(.*)', index.Fanv2Handler),
             (r'/homebridge/windowcovering/(.*)/(.*)/(.*)', index.WindowCoveringHandler),
