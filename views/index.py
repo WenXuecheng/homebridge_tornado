@@ -48,7 +48,7 @@ class LightbulbHandler(RequestHandler):
         option = up.unquote(option)
         value = up.unquote(value)
         res = lightbulb.option_dev_lightbulb(name, option, value, str(self.request.remote_ip))
-        self.finish(res)
+        self.write(res)
 
 class Fanv2Handler(RequestHandler):
     def get(self, name, option, value,*args, **kwargs):
