@@ -25,7 +25,7 @@ def option_dev_swtich(name,op,va,ip):
         if op == 'open':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
             try:
-                res = requests.get(url,timeout=0.001)
+                res = requests.get(url,timeout=0.01)
                 res_switch = {
                     "name_switch": name,
                     "option_switch": op,
@@ -42,7 +42,7 @@ def option_dev_swtich(name,op,va,ip):
         if op == 'close':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
             try:
-                res = requests.get(url,timeout=0.001)
+                res = requests.get(url,timeout=0.01)
                 res_switch = {
                     "name_switch": name,
                     "option_switch": op,
@@ -58,7 +58,7 @@ def option_dev_swtich(name,op,va,ip):
         if op == 'get_status':
             url = 'http://' + dev_name_and_ip[name] + '/' + op
             try:
-                res = requests.get(url,timeout=0.001)
+                res = requests.get(url,timeout=0.01)
                 res_switch = {
                     "name_switch": name,
                     "option_switch": op,
