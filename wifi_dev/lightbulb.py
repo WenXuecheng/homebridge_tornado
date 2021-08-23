@@ -36,7 +36,7 @@ def option_dev_lightbulb(name,op,va,ip):
         if op == 'open':
             url = 'http://' + dev_name_and_ip[name] + ':6236/' + op + '/none'
             try:
-                res = requests.get(url)
+                res = requests.get(url,timeout=0.001)
                 res_lightbulb = {
                     "name_lightbulb": name,
                     "option_lightbulb": op,
@@ -55,7 +55,7 @@ def option_dev_lightbulb(name,op,va,ip):
         if op == 'close':
             url = 'http://' + dev_name_and_ip[name] + ':6236/' + op + '/none'
             try:
-                res = requests.get(url)
+                res = requests.get(url,timeout=0.001)
                 res_lightbulb = {
                     "name_lightbulb": name,
                     "option_lightbulb": op,
@@ -73,7 +73,7 @@ def option_dev_lightbulb(name,op,va,ip):
         if op == 'get_status':
             url = 'http://' + dev_name_and_ip[name] + ':6236/' + op +'/none'
             try:
-                res = requests.get(url)
+                res = requests.get(url,timeout=0.001)
                 res_lightbulb = {
                     "name_lightbulb": name,
                     "option_lightbulb": op,
@@ -92,7 +92,7 @@ def option_dev_lightbulb(name,op,va,ip):
         if op == 'get_brightness':
             url = 'http://' + dev_name_and_ip[name] + ':6236/' + op +'/none'
             try:
-                res = requests.get(url)
+                res = requests.get(url,timeout=0.001)
                 res_lightbulb = {
                     "name_lightbulb": name,
                     "option_lightbulb": op,
