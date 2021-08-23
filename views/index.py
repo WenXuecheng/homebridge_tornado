@@ -38,17 +38,15 @@ class SwitchHandler(RequestHandler):
         option = up.unquote(option)
         value = up.unquote(value)
         res = switch.option_dev_swtich(name,option,value,str(self.request.remote_ip))
-        self.write(res)
+        self.finish(res)
 
 class LightbulbHandler(RequestHandler):
-    def head(self, name, option, value,*args, **kwargs):
-        pass
     def get(self, name, option, value,*args, **kwargs):
         name = up.unquote(name)
         option = up.unquote(option)
         value = up.unquote(value)
         res = lightbulb.option_dev_lightbulb(name, option, value, str(self.request.remote_ip))
-        self.write(res)
+        self.finish(res)
 
 class Fanv2Handler(RequestHandler):
     def get(self, name, option, value,*args, **kwargs):

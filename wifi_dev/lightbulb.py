@@ -23,12 +23,15 @@ def option_dev_lightbulb(name,op,va,ip):
                 return {"ip_status":"changed"}
             return {"ip_status":"unchanged"}
         if op == 'set_brightness':
-            res_lightbulb = {
-                "name_lightbulb": name,
-                "option_lightbulb": op,
-                "status_lightbulb": '',
-                "brightness_lightbulb": va,
-            }
+            try:
+                res_lightbulb = {
+                    "name_lightbulb": name,
+                    "option_lightbulb": op,
+                    "status_lightbulb": '',
+                    "brightness_lightbulb": va,
+                }
+            except:
+                pass
             return res_lightbulb
         if op == 'open':
             url = 'http://' + dev_name_and_ip[name] + ':6236/' + op + '/none'
@@ -93,7 +96,7 @@ def option_dev_lightbulb(name,op,va,ip):
                 res_lightbulb = {
                     "name_lightbulb": name,
                     "option_lightbulb": op,
-                    "status_lightbulb": bool(1-int(res.text.split(':')[1])),
+                    "status_lightbulb": '',
                     "brightness_lightbulb": '',
                 }
             except:
@@ -101,7 +104,7 @@ def option_dev_lightbulb(name,op,va,ip):
                     "name_lightbulb": name,
                     "option_lightbulb": op,
                     "status_lightbulb": False,
-                    "brightness_lightbulb": '',
+                    "brightness_lightbulb": 0,
                 }
             return res_lightbulb
 
