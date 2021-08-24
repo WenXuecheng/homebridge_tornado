@@ -19,6 +19,7 @@ settings = {
     "static_path": os.path.join(BASE_DIRS, "static"),
     "template_path": os.path.join(BASE_DIRS, "templates"),
     "wifi_dev_path": os.path.join(BASE_DIRS, "wifi_dev"),
+    "views_path": os.path.join(BASE_DIRS, "views"),
     "debug": True
 }
 
