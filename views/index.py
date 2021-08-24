@@ -192,4 +192,4 @@ class WindowCoveringHandler(RequestHandler):
 
 class TestHandler(RequestHandler):
     def get(self, *args, **kwargs):
-        self.render('./test.html')
+        self.render('./views/test.html')
